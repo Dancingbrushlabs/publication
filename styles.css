@@ -250,6 +250,48 @@ h3 {
   align-items: start;
 }
 
+.book-feature {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
+  gap: clamp(32px, 7vw, 84px);
+  align-items: center;
+  border-top: 1px solid var(--line);
+  background: #fffdf9;
+}
+
+.book-cover {
+  max-width: 460px;
+}
+
+.book-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 18px 40px rgba(25, 23, 20, 0.14);
+}
+
+.book-copy {
+  max-width: 680px;
+}
+
+.book-meta {
+  margin: 18px 0 0;
+  color: var(--accent-strong);
+  font-size: 16px;
+  font-weight: 720;
+}
+
+.text-link {
+  display: inline-flex;
+  margin-top: 18px;
+  color: var(--accent-strong);
+  font-weight: 760;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
 .site-footer {
   display: flex;
   align-items: center;
@@ -290,7 +332,8 @@ h3 {
   }
 
   .grid,
-  .split {
+  .split,
+  .book-feature {
     grid-template-columns: 1fr;
   }
 
