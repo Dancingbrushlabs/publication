@@ -55,15 +55,9 @@ a {
 }
 
 .brand-mark {
-  display: grid;
-  place-items: center;
   width: 36px;
   height: 36px;
-  border-radius: 8px;
-  color: #fff;
-  background: var(--accent);
-  font-size: 13px;
-  letter-spacing: 0.04em;
+  display: block;
 }
 
 .site-nav {
