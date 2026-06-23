@@ -293,11 +293,6 @@ h3 {
 }
 
 .preview-feature {
-  display: grid;
-  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
-  gap: clamp(32px, 7vw, 84px);
-  align-items: center;
-  border-top: 1px solid var(--line);
   background: #f7f2e9;
 }
 
@@ -311,21 +306,8 @@ h3 {
 
 .preview-cover {
   display: block;
-  justify-self: start;
-  width: 100%;
-  max-width: 360px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
   overflow: hidden;
-  background: #fff;
-  box-shadow: 0 20px 54px rgba(25, 23, 20, 0.16);
   text-decoration: none;
-}
-
-.preview-cover img {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 
 .site-footer {
