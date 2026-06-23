@@ -294,7 +294,7 @@ h3 {
 
 .preview-feature {
   display: grid;
-  grid-template-columns: minmax(260px, 0.62fr) minmax(320px, 0.92fr);
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
   gap: clamp(32px, 7vw, 84px);
   align-items: center;
   border-top: 1px solid var(--line);
@@ -311,6 +311,9 @@ h3 {
 
 .preview-cover {
   display: block;
+  justify-self: start;
+  width: 100%;
+  max-width: 460px;
   border: 1px solid var(--line);
   border-radius: 8px;
   overflow: hidden;

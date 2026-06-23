@@ -32,36 +32,50 @@
   border-radius: 8px;
   background: #fffdf8;
   box-shadow: 0 24px 70px rgba(25, 23, 20, 0.18);
-  transform-origin: right bottom;
+  cursor: pointer;
 }
 
-.book-page img {
+.page-image {
   display: block;
   width: 100%;
   height: auto;
 }
 
-.book-page.turning {
-  animation: pageTurn 520ms ease-in-out;
+.next-image {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 360ms ease;
+}
+
+.book-page.turning .current {
+  opacity: 0;
+  transition: opacity 360ms ease;
+}
+
+.book-page.turning .next-image {
+  opacity: 1;
 }
 
 .page-curl {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 30%;
+  width: 34%;
   aspect-ratio: 1;
   pointer-events: none;
   opacity: 0;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0.86) 50%, rgba(214, 204, 187, 0.92) 100%),
-    radial-gradient(circle at 100% 100%, rgba(25, 23, 20, 0.22), transparent 58%);
+    radial-gradient(circle at 100% 100%, rgba(25, 23, 20, 0.22), transparent 58%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0) 42%, rgba(255, 255, 255, 0.94) 52%, rgba(211, 200, 181, 0.95) 100%);
   border-top-left-radius: 100%;
-  transform: translate(44%, 44%) rotate(0deg);
+  clip-path: ellipse(72% 72% at 100% 100%);
+  transform: translate(48%, 48%) scale(0.28);
+  transform-origin: right bottom;
 }
 
 .book-page.turning .page-curl {
-  animation: curlLift 520ms ease-in-out;
+  animation: curlLift 620ms ease-in-out;
 }
 
 .nav-button {
@@ -91,34 +105,25 @@
   font-weight: 720;
 }
 
-@keyframes pageTurn {
-  0% {
-    transform: rotate(0deg) scale(1);
-  }
-
-  50% {
-    transform: rotate(-1.2deg) scale(0.985);
-  }
-
-  100% {
-    transform: rotate(0deg) scale(1);
-  }
-}
-
 @keyframes curlLift {
   0% {
     opacity: 0;
-    transform: translate(44%, 44%) rotate(0deg);
+    transform: translate(48%, 48%) scale(0.28);
   }
 
-  46% {
+  42% {
     opacity: 1;
-    transform: translate(8%, 8%) rotate(-8deg);
+    transform: translate(12%, 12%) scale(1);
+  }
+
+  64% {
+    opacity: 1;
+    transform: translate(6%, 6%) scale(1.08);
   }
 
   100% {
     opacity: 0;
-    transform: translate(44%, 44%) rotate(0deg);
+    transform: translate(48%, 48%) scale(0.28);
   }
 }
 
@@ -143,8 +148,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .book-page.turning,
   .book-page.turning .page-curl {
     animation: none;
+  }
+
+  .book-page.turning .current,
+  .book-page.turning .next-image {
+    transition: none;
   }
 }

@@ -19,6 +19,7 @@ const pages = [
 
 const bookPage = document.querySelector("#book-page");
 const bookImage = document.querySelector("#book-image");
+const nextImage = document.querySelector("#next-image");
 const pageCount = document.querySelector("#page-count");
 const prevButton = document.querySelector(".prev");
 const nextButton = document.querySelector(".next");
@@ -41,17 +42,23 @@ function turnTo(index) {
     return;
   }
 
+  const normalizedIndex = (index + pages.length) % pages.length;
+  const nextPage = pages[normalizedIndex];
+
   isTurning = true;
+  nextImage.src = nextPage.src;
+  nextImage.alt = "";
   bookPage.classList.add("turning");
 
   window.setTimeout(() => {
-    showPage(index);
-  }, 250);
+    showPage(normalizedIndex);
+  }, 320);
 
   window.setTimeout(() => {
     bookPage.classList.remove("turning");
+    nextImage.src = pages[currentPage].src;
     isTurning = false;
-  }, 540);
+  }, 640);
 }
 
 prevButton.addEventListener("click", () => turnTo(currentPage - 1));
