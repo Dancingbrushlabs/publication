@@ -41,70 +41,19 @@ function updateSceneText(index) {
   updatePageCount(safeIndex);
 }
 
-function setupMobilePreview() {
-  const reader = document.querySelector(".reader");
-  reader?.classList.add("mobile-reader");
-  let currentPage = 0;
-  let animating = false;
-
-  pageElements.forEach((page, index) => {
-    page.hidden = index !== currentPage;
-  });
-  updateSceneText(currentPage);
-
-  function showPage(index, direction) {
-    if (animating || pageElements.length === 0) {
-      return;
-    }
-    const nextPage = (index + pageElements.length) % pageElements.length;
-    if (nextPage === currentPage) {
-      return;
-    }
-    animating = true;
-    const oldPage = pageElements[currentPage];
-    const newPage = pageElements[nextPage];
-    const suffix = direction < 0 ? "prev" : "next";
-
-    oldPage.hidden = false;
-    newPage.hidden = false;
-    oldPage.classList.add(`turning-out-${suffix}`);
-    newPage.classList.add(`turning-in-${suffix}`);
-
-    requestAnimationFrame(() => {
-      oldPage.classList.add("is-turning");
-      newPage.classList.add("is-turning");
-    });
-
-    window.setTimeout(() => {
-      oldPage.hidden = true;
-      oldPage.classList.remove(`turning-out-${suffix}`, "is-turning");
-      newPage.classList.remove(`turning-in-${suffix}`, "is-turning");
-      currentPage = nextPage;
-      updateSceneText(currentPage);
-      animating = false;
-    }, 660);
-  }
-
-  prevButton.addEventListener("click", () => showPage(currentPage - 1, -1));
-  nextButton.addEventListener("click", () => showPage(currentPage + 1, 1));
-}
-
-const isNarrowViewport = window.matchMedia("(max-width: 860px)").matches;
-
-if (pageElements.length > 0 && isNarrowViewport) {
-  setupMobilePreview();
-} else if (window.St && pageElements.length > 0) {
+if (window.St && pageElements.length > 0) {
+  const isNarrowViewport = window.matchMedia("(max-width: 860px)").matches;
   const pageFlip = new St.PageFlip(flipBook, {
     width: 715,
     height: 550,
     size: "stretch",
-    minWidth: 320,
+    minWidth: isNarrowViewport ? 240 : 320,
     maxWidth: 1120,
-    minHeight: 246,
+    minHeight: isNarrowViewport ? 185 : 246,
     maxHeight: 862,
     maxShadowOpacity: 0.35,
     showCover: false,
-    usePortrait: false,
+    usePortrait: isNarrowViewport,
     mobileScrollSupport: false,
     flippingTime: 800,
   });
