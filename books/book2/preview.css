@@ -17,8 +17,12 @@
 }
 
 .preview-heading h1 {
-  max-width: 12ch;
+  max-width: 8em;
   font-size: clamp(46px, 7vw, 86px);
+}
+
+.preview-heading h1 span {
+  display: block;
 }
 
 .preview-text {
