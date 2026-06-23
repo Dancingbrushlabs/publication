@@ -42,17 +42,18 @@ function updateSceneText(index) {
 }
 
 if (window.St && pageElements.length > 0) {
+  const isNarrowViewport = window.matchMedia("(max-width: 860px)").matches;
   const pageFlip = new St.PageFlip(flipBook, {
     width: 715,
     height: 550,
     size: "stretch",
-    minWidth: 320,
+    minWidth: isNarrowViewport ? 240 : 320,
     maxWidth: 1120,
-    minHeight: 246,
+    minHeight: isNarrowViewport ? 185 : 246,
     maxHeight: 862,
     maxShadowOpacity: 0.35,
     showCover: false,
-    usePortrait: false,
+    usePortrait: isNarrowViewport,
     mobileScrollSupport: false,
     flippingTime: 800,
   });
