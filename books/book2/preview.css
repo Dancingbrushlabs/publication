@@ -9,8 +9,8 @@
 
 .preview-heading {
   display: grid;
-  grid-template-columns: minmax(260px, 0.44fr) minmax(280px, 0.72fr);
-  gap: clamp(20px, 5vw, 64px);
+  grid-template-columns: minmax(300px, 0.5fr) minmax(320px, 0.72fr);
+  gap: clamp(36px, 7vw, 96px);
   align-items: start;
   max-width: 1180px;
   margin: 0 auto;

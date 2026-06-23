@@ -293,7 +293,8 @@ h3 {
 }
 
 .preview-feature {
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.72fr);
+  grid-template-columns: minmax(0, 0.82fr) minmax(260px, 0.72fr);
+  gap: clamp(32px, 5vw, 72px);
   background: #f7f2e9;
 }
 
@@ -307,7 +308,6 @@ h3 {
 
 .preview-cover {
   display: block;
-  justify-self: end;
   width: 100%;
   aspect-ratio: 700 / 524;
   overflow: hidden;
