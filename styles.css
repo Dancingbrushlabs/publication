@@ -313,7 +313,7 @@ h3 {
   display: block;
   justify-self: start;
   width: 100%;
-  max-width: 460px;
+  max-width: 360px;
   border: 1px solid var(--line);
   border-radius: 8px;
   overflow: hidden;

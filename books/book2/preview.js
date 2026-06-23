@@ -1,66 +1,49 @@
-const pages = [
-  {
-    src: "../../assets/books/book2-1.jpg",
-    alt: "두 번째 그림책 프리뷰 장면 1",
-  },
-  {
-    src: "../../assets/books/book2-2.jpg",
-    alt: "두 번째 그림책 프리뷰 장면 2",
-  },
-  {
-    src: "../../assets/books/book2-3.jpg",
-    alt: "두 번째 그림책 프리뷰 장면 3",
-  },
-  {
-    src: "../../assets/books/book2-4.jpg",
-    alt: "두 번째 그림책 프리뷰 장면 4",
-  },
-];
-
-const bookPage = document.querySelector("#book-page");
-const bookImage = document.querySelector("#book-image");
-const nextImage = document.querySelector("#next-image");
+const pageElements = document.querySelectorAll(".book-page");
 const pageCount = document.querySelector("#page-count");
 const prevButton = document.querySelector(".prev");
 const nextButton = document.querySelector(".next");
+const flipBook = document.querySelector("#flip-book");
 
-let currentPage = 0;
-let isTurning = false;
-
-function showPage(index) {
-  const normalizedIndex = (index + pages.length) % pages.length;
-  const page = pages[normalizedIndex];
-
-  currentPage = normalizedIndex;
-  bookImage.src = page.src;
-  bookImage.alt = page.alt;
-  pageCount.textContent = `${currentPage + 1} / ${pages.length}`;
+function updatePageCount(index) {
+  pageCount.textContent = `${index + 1} / ${pageElements.length}`;
 }
 
-function turnTo(index) {
-  if (isTurning) {
-    return;
+if (window.St && pageElements.length > 0) {
+  const pageFlip = new St.PageFlip(flipBook, {
+    width: 715,
+    height: 550,
+    size: "stretch",
+    minWidth: 300,
+    maxWidth: 900,
+    minHeight: 231,
+    maxHeight: 692,
+    maxShadowOpacity: 0.35,
+    showCover: false,
+    usePortrait: false,
+    mobileScrollSupport: false,
+    flippingTime: 800,
+  });
+
+  pageFlip.loadFromHTML(pageElements);
+  pageFlip.on("flip", (event) => updatePageCount(event.data));
+
+  prevButton.addEventListener("click", () => pageFlip.flipPrev());
+  nextButton.addEventListener("click", () => pageFlip.flipNext());
+} else {
+  let currentPage = 0;
+
+  pageElements.forEach((page, index) => {
+    page.hidden = index !== 0;
+  });
+
+  function showPage(index) {
+    currentPage = (index + pageElements.length) % pageElements.length;
+    pageElements.forEach((page, pageIndex) => {
+      page.hidden = pageIndex !== currentPage;
+    });
+    updatePageCount(currentPage);
   }
 
-  const normalizedIndex = (index + pages.length) % pages.length;
-  const nextPage = pages[normalizedIndex];
-
-  isTurning = true;
-  nextImage.src = nextPage.src;
-  nextImage.alt = "";
-  bookPage.classList.add("turning");
-
-  window.setTimeout(() => {
-    showPage(normalizedIndex);
-  }, 320);
-
-  window.setTimeout(() => {
-    bookPage.classList.remove("turning");
-    nextImage.src = pages[currentPage].src;
-    isTurning = false;
-  }, 640);
+  prevButton.addEventListener("click", () => showPage(currentPage - 1));
+  nextButton.addEventListener("click", () => showPage(currentPage + 1));
 }
-
-prevButton.addEventListener("click", () => turnTo(currentPage - 1));
-nextButton.addEventListener("click", () => turnTo(currentPage + 1));
-bookPage.addEventListener("click", () => turnTo(currentPage + 1));
