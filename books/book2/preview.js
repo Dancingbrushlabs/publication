@@ -43,6 +43,9 @@ function updateSceneText(index) {
 
 if (window.St && pageElements.length > 0) {
   const isNarrowViewport = window.matchMedia("(max-width: 860px)").matches;
+  const imageSources = Array.from(pageElements)
+    .map((page) => page.querySelector("img")?.getAttribute("src"))
+    .filter(Boolean);
   const pageFlip = new St.PageFlip(flipBook, {
     width: 715,
     height: 550,
@@ -58,7 +61,10 @@ if (window.St && pageElements.length > 0) {
     flippingTime: 800,
   });
 
-  pageFlip.loadFromHTML(pageElements);
+  pageElements.forEach((page) => {
+    page.hidden = true;
+  });
+  pageFlip.loadFromImages(imageSources);
   updateSceneText(0);
   pageFlip.on("flip", (event) => updateSceneText(event.data));
 
