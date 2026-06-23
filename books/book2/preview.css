@@ -21,6 +21,17 @@
   font-size: clamp(46px, 7vw, 86px);
 }
 
+.preview-text {
+  align-self: end;
+}
+
+.scene-label {
+  margin: 0 0 12px;
+  color: var(--accent-strong);
+  font-size: 18px;
+  font-weight: 760;
+}
+
 .reader {
   display: grid;
   grid-template-columns: 48px minmax(0, 1fr) 48px;
