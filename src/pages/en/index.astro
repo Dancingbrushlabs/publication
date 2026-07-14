@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<BaseLayout
+  lang="en"
+  title="Choomboot | A place where stories dance"
+  description="The English website for Choomboot Publishing is being prepared."
+>
+  <main class="language-placeholder">
+    <img src={`${base}/logo-choomboot.svg`} alt="Choomboot" />
+    <p class="kicker"><span></span> Choomboot Publishing</p>
+    <h1>A place where<br /><em>stories dance.</em></h1>
+    <p>Our English website is being prepared.</p>
+    <a class="button button-primary" href={`${base}/`}>한국어 홈페이지</a>
+  </main>
+</BaseLayout>

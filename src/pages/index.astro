@@ -1,0 +1,186 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const navItems = [
+  ["춤붓 소개", "#about"],
+  ["책", "#books"],
+  ["강의", "#lectures"],
+  ["자료실", "#downloads"],
+  ["새소식", "#news"],
+  ["구매하기", "#buy"],
+];
+
+const socials = [
+  ["Instagram", "#contact"],
+  ["Naver Blog", "#contact"],
+  ["Facebook", "#contact"],
+];
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<BaseLayout
+  title="춤붓 | 이야기와 함께 춤추는 곳"
+  description="이야기와 함께 춤추는 곳, 춤붓. 그림책과 창작 출판물을 소개합니다."
+>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="춤붓 홈페이지">
+      <img src={`${base}/logo-choomboot.svg`} alt="" />
+    </a>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+      <span class="sr-only">메뉴 열기</span>
+      <span></span><span></span>
+    </button>
+
+    <nav id="main-nav" class="main-nav" aria-label="주요 메뉴">
+      {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
+    </nav>
+
+    <div class="language-switch" aria-label="언어 선택">
+      <a class="active" href={`${base}/`} aria-current="page">한국어</a>
+      <span aria-hidden="true"></span>
+      <a href={`${base}/en/`}>English</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <p class="kicker"><span></span> Dancing Brush Publishing</p>
+        <h1>이야기와 함께<br /><em>춤추는 곳, 춤붓</em></h1>
+        <p class="hero-description">
+          마음에 오래 머무는 이야기와 그림을 책으로 엮습니다.<br />
+          작은 상상이 독자의 하루에 가볍게 춤추기를 바랍니다.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#books">대표 도서 보기</a>
+          <a class="button button-text" href="#about">춤붓 이야기 <span>↗</span></a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="pastel-shape shape-lilac"></div>
+        <div class="pastel-shape shape-blue"></div>
+        <div class="pastel-shape shape-coral"></div>
+        <img class="hero-logo" src={`${base}/logo-choomboot.svg`} alt="" />
+        <p>stories<br />in motion</p>
+      </div>
+    </section>
+
+    <section id="books" class="featured-book section-shell">
+      <div class="book-visual">
+        <div class="book-halo"></div>
+        <img src={`${base}/assets/books/book1.jpg`} alt="해를 낚은 할아버지 책 표지" />
+        <span class="book-sticker">대표 도서</span>
+      </div>
+      <div class="book-content">
+        <p class="kicker coral"><span></span> Featured Book</p>
+        <h2>해를 낚은<br />할아버지</h2>
+        <p class="book-meta">김정미 글 · 남미리 그림</p>
+        <p>
+          낚시에 자신 있던 할아버지가 바다에서 해를 낚으며 시작되는 상상력 가득한 그림책입니다.
+          자연과의 균형, 실수를 함께 해결하는 힘을 따뜻한 장면으로 전합니다.
+        </p>
+        <a class="button button-dark" href="https://asteroidbook.com/books/theoldman/" rel="noreferrer">
+          책 자세히 보기 <span>↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="about" class="story-section section-shell">
+      <div class="section-heading">
+        <p class="kicker"><span></span> About Choomboot</p>
+        <h2>책장을 넘기는 순간,<br /><em>새로운 춤이 시작됩니다.</em></h2>
+      </div>
+      <div class="story-grid">
+        <article class="story-card lilac-card">
+          <span class="card-number">01</span>
+          <h3>이야기를 발견합니다</h3>
+          <p>일상 속 작고 특별한 순간에서 오래 남을 이야기를 찾습니다.</p>
+          <a href="#about" aria-label="이야기를 발견합니다 더 보기">→</a>
+        </article>
+        <article class="story-card blue-card">
+          <span class="card-number">02</span>
+          <h3>정성껏 책을 만듭니다</h3>
+          <p>글과 그림이 가장 아름답게 만나는 호흡을 고민합니다.</p>
+          <a href="#about" aria-label="정성껏 책을 만듭니다 더 보기">→</a>
+        </article>
+        <article class="story-card coral-card">
+          <span class="card-number">03</span>
+          <h3>독자와 함께 나눕니다</h3>
+          <p>책, 강의와 자료를 통해 이야기의 즐거움을 넓혀갑니다.</p>
+          <a href="#about" aria-label="독자와 함께 나눕니다 더 보기">→</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="path-section section-shell" aria-labelledby="path-title">
+      <div class="section-heading compact">
+        <p class="kicker"><span></span> Explore</p>
+        <h2 id="path-title">춤붓을 더 만나보세요</h2>
+      </div>
+      <div class="path-grid">
+        <a id="lectures" class="path-card" href="#contact">
+          <span class="path-icon lilac-icon">♪</span>
+          <span><strong>강의</strong><small>책과 이야기를 더 깊게 만나는 시간</small></span>
+          <b>↗</b>
+        </a>
+        <a id="downloads" class="path-card" href="#contact">
+          <span class="path-icon blue-icon">↓</span>
+          <span><strong>자료실</strong><small>오디오와 독후 활동 자료</small></span>
+          <b>↗</b>
+        </a>
+        <a id="news" class="path-card" href="#contact">
+          <span class="path-icon coral-icon">•</span>
+          <span><strong>새소식</strong><small>신간과 춤붓의 최근 이야기</small></span>
+          <b>↗</b>
+        </a>
+      </div>
+    </section>
+
+    <section id="buy" class="newsletter section-shell">
+      <div>
+        <p class="kicker light"><span></span> Stay in touch</p>
+        <h2>새로운 이야기가 도착하면<br />가장 먼저 알려드릴게요.</h2>
+      </div>
+      <a class="button button-light" href="#contact">소식 받기 <span>↗</span></a>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer section-shell">
+    <div class="footer-brand">
+      <img src={`${base}/logo-choomboot.svg`} alt="춤붓" />
+      <p>이야기와 함께 춤추는 곳</p>
+    </div>
+    <div class="footer-links">
+      <div>
+        <strong>Contact</strong>
+        <a href="mailto:hello@example.com">hello@example.com</a>
+        <span>서울특별시 주소 준비 중</span>
+      </div>
+      <div>
+        <strong>Follow</strong>
+        {socials.map(([label, href]) => <a href={href}>{label}</a>)}
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Choomboot Publishing</span>
+      <a href="#contact">개인정보처리방침</a>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector(".main-nav");
+    toggle?.addEventListener("click", () => {
+      const open = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!open));
+      nav?.classList.toggle("is-open", !open);
+    });
+    nav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+      toggle?.setAttribute("aria-expanded", "false");
+      nav.classList.remove("is-open");
+    }));
+  </script>
+</BaseLayout>

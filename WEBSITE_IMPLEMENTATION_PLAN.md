@@ -1,14 +1,275 @@
 # Dancing Brush Website Implementation Plan
 
-> This document defines the recommended technical direction, content structure, deployment approach, and phased implementation plan for the Dancing Brush publishing website.
+> 이 문서는 `WEBSITE_REQUIREMENTS.md`와 2026년 7월 14일 계획안을 바탕으로 춤붓 출판사 공식 홈페이지의 기술 방향, 콘텐츠 구조, 디자인 원칙, 배포 방식과 단계별 구현 범위를 정리한다.
 
-## 1. Recommended Direction
+## 1. 목표
 
-Use the existing `Dancingbrushlabs/publication` repository as the official website repository and rebuild it as a lightweight static website.
+`Dancingbrushlabs/publication` 저장소를 춤붓 출판사 공식 홈페이지 저장소로 유지하고, 다음 목적에 집중한 빠르고 관리하기 쉬운 정적 사이트로 개편한다.
 
-Recommended stack:
+- 출판사와 출판 철학을 신뢰감 있게 소개한다.
+- 책, 강의, 자료와 새소식을 한국어와 영어로 제공한다.
+- 구매 링크와 문의 경로를 명확하게 연결한다.
+- 운영자가 Markdown 파일을 추가하거나 수정해 콘텐츠를 관리할 수 있게 한다.
+- 향후 검색, 오디오, 신청 폼과 CMS를 필요할 때 점진적으로 확장한다.
+
+초기 목표는 회원가입, 결제, 재고 관리를 포함한 통합 플랫폼이 아니다. 책과 출판사가 주인공이 되는 공식 정보 사이트를 먼저 완성한다.
+
+## 2. 권장 기술 구성
 
 - Astro
 - TypeScript
 - CSS
-- Markdown or
+- Astro Content Collections와 Markdown 콘텐츠
+- GitHub Actions
+- GitHub Pages
+- `choomboot.com` 사용자 지정 도메인
+
+Astro는 콘텐츠 중심 정적 페이지에 적합하고, 필요한 부분에만 JavaScript를 사용할 수 있다. 순수 HTML보다 반복 콘텐츠와 다국어 페이지를 관리하기 쉽고, 초기 요구사항에는 React나 Next.js보다 가볍다.
+
+```text
+Dancingbrushlabs/publication
+        │
+        ├─ Astro + TypeScript + CSS
+        ├─ Markdown 콘텐츠
+        ├─ 한국어 기본 경로 /
+        ├─ 영어 경로 /en/
+        └─ GitHub Actions
+                │
+                ▼
+          GitHub Pages
+                │
+                ▼
+          choomboot.com
+```
+
+## 3. 언어와 URL 구조
+
+한국어를 기본 언어로 제공하고 영어 페이지는 `/en/` 아래에 둔다.
+
+```text
+choomboot.com/       → 한국어
+choomboot.com/en/    → English
+```
+
+- 첫 방문 시 언어 선택을 강제하지 않는다.
+- 헤더에 항상 명확한 `KO | EN` 전환 메뉴를 제공한다.
+- 한국어와 영어는 자동 번역이 아닌 공식 콘텐츠로 각각 관리한다.
+- 대응하는 콘텐츠는 공통 `id`로 연결한다.
+- 기타 언어 자동 번역은 1차 범위에서 제외한다.
+
+```text
+src/content/books/ko/
+src/content/books/en/
+src/content/news/ko/
+src/content/news/en/
+```
+
+책 콘텐츠 예시:
+
+```yaml
+id: dream-brush-01
+title: 꿈붓 첫 번째 이야기
+language: ko
+series: 꿈붓
+cover: /images/books/dream-brush-01.jpg
+publicationDate: 2026-08-01
+isbn: 978-...
+purchaseUrl: https://...
+featured: true
+```
+
+## 4. 1차 메뉴 구조
+
+### 한국어
+
+- 홈
+- 춤붓 소개
+- 책
+- 강의
+- 자료실
+- 새소식
+- 구매하기
+
+### English
+
+- Home
+- About
+- Books
+- Lectures
+- Downloads
+- News
+- Buy
+
+`참붓 / Software`와 `작품 / Merchandise`는 1차 상단 메뉴에서 제외한다. 작품과 굿즈는 필요하면 구매하기 페이지의 작은 섹션으로 소개하고, 소프트웨어는 별도 브랜드 사이트에서 운영한다.
+
+## 5. 출판과 소프트웨어 브랜드 분리
+
+```text
+choomboot.com
+→ 춤붓 출판, 책, 강의, 자료
+
+dancingbrushlabs.com 또는 별도 사이트
+→ Curve Trace, QuickLog 등 연구·소프트웨어 프로젝트
+```
+
+출판 홈페이지 하단이나 소개 페이지에서는 `DancingBrush Labs — Research and software projects` 정도의 보조 링크만 제공해 사업체 연결성을 유지한다.
+
+## 6. 콘텐츠 관리
+
+초기에는 관리자 페이지 없이 Astro Content Collections와 Markdown으로 운영한다.
+
+- 책 파일 하나에서 목록 카드, 상세 페이지, 추천 도서, 시리즈 분류와 SEO 정보를 생성한다.
+- 새소식은 공식 발표 중심으로 작성하고 메인 화면에는 최근 글 3개만 노출한다.
+- 긴 활동 기록과 후기는 네이버 블로그에서 운영하고 홈페이지에서는 선별 링크를 제공한다.
+- 다운로드 자료와 초기 오디오는 정적 파일로 제공한다.
+
+```text
+public/downloads/
+public/audio/
+public/images/
+```
+
+파일 용량이나 트래픽이 커질 때 Cloudflare R2 또는 S3 같은 외부 저장소 도입을 검토한다.
+
+## 7. 페이지 구성
+
+### 홈페이지
+
+```text
+[로고]  소개  책  강의  자료실  새소식  구매하기  KO | EN
+
+대표 책 또는 출판사 메시지
+큰 표지 이미지 + 짧은 문장 + 자세히 보기
+
+춤붓의 책
+대표 도서 3~4권
+
+춤붓 이야기
+출판 철학 또는 짧은 소개
+
+최근 소식
+최근 게시물 3개
+
+자료실 / 강의
+대표 진입 카드
+
+주소 · 이메일 · SNS · 사업자 정보
+```
+
+### 핵심 페이지
+
+- 춤붓 소개: 출판사 소개, 대표 소개, 인사말과 출판 철학
+- 책: 시리즈별 목록, 책 상세, 미리보기, 오디오, 자료와 구매 링크
+- 강의: 강의 소개, 예정된 강의, 외부 신청 폼과 문의 이메일
+- 자료실: 오디오, 독후 활동지, 수업 및 강의 자료
+- 새소식: 신간, 행사, 강의, 공지와 네이버 블로그 링크
+- 구매하기: 네이버 스마트스토어, Amazon 등 외부 구매 경로
+- 개인정보처리방침: 수집 정보와 외부 서비스 사용 내역
+
+## 8. 디자인과 브랜드 방향
+
+첨부한 아래쪽 `춤붓` 로고 시안을 기본 방향으로 사용한다. 로고의 연보라, 하늘색과 코랄 핑크를 브랜드 포인트로 삼고, 사이트 전체에는 이 색을 낮은 채도의 파스텔 배경과 장식으로 확장한다.
+
+- 따뜻한 아이보리 또는 흰색을 기본 배경으로 사용한다.
+- 연보라와 하늘색을 주 브랜드색으로 사용한다.
+- 코랄 핑크는 작은 포인트와 상태 표현에 사용한다.
+- 주황색은 구매 또는 주요 행동 버튼에 제한적으로 사용할 수 있다.
+- 본문은 가독성 높은 명조 계열, 메뉴와 버튼은 단정한 고딕 계열을 사용한다.
+- 책 표지와 일러스트가 가장 먼저 보이도록 넓은 여백을 둔다.
+- 로고의 원형 점과 기하학적 한글 획을 반복 장식 요소로 활용한다.
+- 파스텔색 위의 본문은 충분히 어두운 차콜 또는 남보라색으로 표시한다.
+- 과도한 애니메이션을 피하고 모바일 우선 반응형으로 구현한다.
+
+정확한 색상 토큰은 최종 로고 원본에서 추출하고 WCAG 명암 대비를 확인한 뒤 확정한다.
+
+## 9. 강의, 개인정보와 외부 서비스
+
+강의 신청은 1차 버전에서 외부 Google Form 또는 Naver Form 링크와 문의 이메일로 처리한다. 신청량이 늘어날 때 자체 폼, 알림, 일정 관리와 결제를 검토한다.
+
+초기 사이트는 추적 기능을 최소화한다.
+
+- 광고와 SNS 추적 위젯을 넣지 않는다.
+- 분석 도구는 생략하거나 개인정보 친화적인 방법을 선택한다.
+- YouTube 등 제3자 임베드는 필요한 경우에만 사용한다.
+- 간단하고 명확한 개인정보처리방침을 제공한다.
+- 비필수 쿠키를 사용하지 않는 동안 복잡한 쿠키 설정창은 만들지 않는다.
+
+## 10. 단계별 구현
+
+### Phase 1 — 구조와 브랜드
+
+- 기존 책 이미지와 프리뷰 자산 보존
+- Astro 프로젝트 설정
+- 공통 레이아웃, 반응형 헤더와 푸터
+- 한국어 기본 경로와 영어 `/en/` 라우팅
+- 최종 로고, 파스텔 색상 토큰과 기본 서체 적용
+- Content Collections 스키마 구성
+
+### Phase 2 — 핵심 콘텐츠
+
+- 한국어·영어 홈페이지
+- 춤붓 소개
+- 책 목록과 상세 페이지
+- 기존 책 프리뷰 이전
+- 추천 도서와 구매 링크
+- 연락처, SNS와 사업자 정보
+
+### Phase 3 — 운영 콘텐츠
+
+- 강의 페이지
+- 자료실
+- 새소식 목록과 상세 페이지
+- PDF와 오디오 연결
+- 네이버 블로그 선별 링크
+- SEO, Open Graph와 공유 이미지
+- 접근성과 반응형 검증
+
+### Phase 4 — 배포
+
+- GitHub Actions 빌드·배포 구성
+- GitHub Pages 배포
+- `choomboot.com` 연결과 HTTPS 확인
+- 404, sitemap, robots.txt와 canonical URL 확인
+- 도메인 이메일 설정
+
+### Phase 5 — 필요할 때만 확장
+
+- 강의 신청 폼
+- 검색과 필터
+- 추가 언어 또는 자동 번역
+- CMS
+- 뉴스레터
+- 굿즈 판매
+- 대용량 미디어 저장소
+- 소프트웨어 사이트 연결 강화
+
+## 11. 구현 전 필요한 자료와 결정
+
+- 최종 로고 원본 SVG 또는 투명 PNG와 브랜드 색상
+- 한국어·영어 출판사 소개, 대표 인사말과 출판 철학
+- 책 표지, 소개, 저자, ISBN, 출간일, 시리즈와 구매 링크
+- 강의 소개, 사진, 일정, 신청 및 문의 경로
+- 다운로드 파일과 오디오
+- 공식 이메일, 주소, SNS와 사업자 정보
+- `choomboot.com` 도메인 및 DNS 접근 권한
+- 개인정보처리방침에 필요한 사업자·외부 서비스 정보
+- GitHub Pages 배포 전 기존 URL 보존 또는 리디렉션 범위
+
+## 12. 완료 기준
+
+1차 공개 버전은 다음 조건을 만족해야 한다.
+
+- 한국어와 영어 핵심 페이지를 모두 탐색할 수 있다.
+- 책 상세, 구매, 강의, 자료와 문의 경로가 명확하다.
+- 운영자가 Markdown 추가만으로 책과 새소식을 게시할 수 있다.
+- 기존 책 프리뷰가 모바일과 데스크톱에서 정상 작동한다.
+- 로고와 파스텔 브랜드가 모든 페이지에 일관되게 적용된다.
+- 키보드 탐색, 명암 대비, 이미지 대체 텍스트와 반응형 레이아웃을 검증한다.
+- GitHub Actions에서 빌드가 통과하고 `choomboot.com`에서 HTTPS로 제공된다.
+
+## 13. 다음 작업
+
+1. 아래쪽 로고 시안을 정제하고 최종 로고·색상 후보를 확정한다.
+2. 한국어와 영어 사이트맵을 파일 단위로 작성한다.
+3. 홈페이지 와이어프레임을 만든다.
+4. 기존 정적 사이트 자산 보존 계획을 포함해 Phase 1 Astro 전환을 시작한다.
