@@ -1,22 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
   <title id="title">춤붓</title>
   <desc id="desc">연보라, 하늘색과 연두색의 각진 고딕형 기하학 형태로 구성한 춤붓 출판사 로고</desc>
-  <g fill="none" stroke-linecap="square" stroke-linejoin="miter" stroke-width="18">
+  <g fill="none" stroke-linecap="square" stroke-linejoin="round" stroke-width="18">
     <!-- 모든 자음은 80 × 72 모듈과 동일한 18px 고딕형 획을 사용한다. -->
-    <g stroke="#B76CF0">
+    <g stroke="#B76CF0" stroke-linecap="butt">
       <path d="M22 43h80"/>
-      <path d="M27 101C43 88 57 68 62 49C67 68 81 88 97 101" stroke-linejoin="bevel"/>
+      <path d="M27 101C43 88 57 68 62 49C67 68 81 88 97 101"/>
     </g>
 
-    <!-- ㅂ: 위쪽을 열고 양쪽 세로획, 가운데획과 아래획만 사용한다. -->
-    <path d="M140 35v68h78V35M140 69h78" stroke="#43B4EC"/>
+    <!-- 하늘색 ㅁ/ㅂ은 round 조인으로 꺾임을 다듬고, 열린 끝은 별도의 작은 반경 캡으로 마감한다. -->
+    <g stroke="#43B4EC" stroke-linecap="butt">
+      <path d="M140 35v68h78V35M140 69h78"/>
+      <rect x="23" y="148" width="78" height="68"/>
+    </g>
 
-    <rect x="23" y="148" width="78" height="68" stroke="#43B4EC"/>
-
-    <path d="M143 211C161 193 176 170 179 148C182 170 197 193 215 211" stroke="#B76CF0"/>
+    <path d="M143 211C161 193 176 170 179 148C182 170 197 193 215 211" stroke="#B76CF0" stroke-linecap="butt"/>
   </g>
 
-  <g fill="#A8D95B">
+  <!-- 기본 round 캡의 반원 느낌을 피한 3px 반경의 모음 끝 마감. -->
+  <g fill="#43B4EC">
+    <rect x="131" y="26" width="18" height="18" rx="3"/>
+    <rect x="209" y="26" width="18" height="18" rx="3"/>
+  </g>
+
+  <!-- ㅈ/ㅅ의 열린 획 끝도 진행 방향에 맞춘 동일한 3px 반경으로 마감한다. -->
+  <g fill="#B76CF0">
+    <rect x="13" y="34" width="18" height="18" rx="3"/>
+    <rect x="93" y="34" width="18" height="18" rx="3"/>
+    <rect x="18" y="92" width="18" height="18" rx="3" transform="rotate(-39 27 101)"/>
+    <rect x="88" y="92" width="18" height="18" rx="3" transform="rotate(39 97 101)"/>
+    <rect x="134" y="202" width="18" height="18" rx="3" transform="rotate(-45 143 211)"/>
+    <rect x="206" y="202" width="18" height="18" rx="3" transform="rotate(45 215 211)"/>
+  </g>
+
+  <g fill="#8FBE8B">
     <circle cx="62" cy="17" r="9"/>
     <circle cx="62" cy="125.5" r="9"/>
     <circle cx="179" cy="125.5" r="9"/>
