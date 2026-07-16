@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
   <title id="title">춤붓</title>
-  <desc id="desc">연보라, 하늘색과 코랄색의 각진 고딕형 기하학 형태로 구성한 춤붓 출판사 로고</desc>
-  <g fill="none" stroke-linecap="square" stroke-linejoin="miter" stroke-width="16">
-    <!-- 모든 자음은 80 × 72 모듈과 동일한 16px 고딕형 획을 사용한다. -->
+  <desc id="desc">연보라, 하늘색과 연두색의 각진 고딕형 기하학 형태로 구성한 춤붓 출판사 로고</desc>
+  <g fill="none" stroke-linecap="square" stroke-linejoin="miter" stroke-width="18">
+    <!-- 모든 자음은 80 × 72 모듈과 동일한 18px 고딕형 획을 사용한다. -->
     <g stroke="#B76CF0">
       <path d="M22 43h80"/>
       <path d="M27 101C43 88 57 68 62 49C67 68 81 88 97 101" stroke-linejoin="bevel"/>
@@ -16,7 +16,7 @@
     <path d="M143 211C161 193 176 170 179 148C182 170 197 193 215 211" stroke="#B76CF0"/>
   </g>
 
-  <g fill="#FF4D73">
+  <g fill="#A8D95B">
     <circle cx="62" cy="17" r="9"/>
     <circle cx="62" cy="125.5" r="9"/>
     <circle cx="179" cy="125.5" r="9"/>

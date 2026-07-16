@@ -30,11 +30,11 @@ img { display: block; max-width: 100%; }
 }
 .brand { display: flex; align-items: center; text-decoration: none; }
 .brand img { width: 48px; height: 48px; }
-.main-nav { display: flex; justify-content: center; gap: clamp(18px, 2.5vw, 38px); font-size: 14px; font-weight: 600; }
+.main-nav { display: flex; justify-content: center; gap: clamp(18px, 2.5vw, 38px); font-size: 16px; font-weight: 600; }
 .main-nav a, .language-switch a { position: relative; text-decoration: none; }
 .main-nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -7px; height: 2px; background: var(--lilac); transition: right .2s ease; }
 .main-nav a:hover::after { right: 0; }
-.language-switch { display: flex; align-items: center; gap: 9px; font-size: 12px; font-weight: 600; }
+.language-switch { display: flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 600; }
 .language-switch span { width: 1px; height: 13px; background: var(--line); }
 .language-switch a:not(.active) { color: #9991a1; }
 .language-switch .active { color: var(--coral); }
@@ -138,7 +138,7 @@ h1 em, h2 em { color: var(--lilac); font-style: normal; }
   .site-header { min-height: 70px; padding-block: 8px; }
   .brand img { width: 42px; height: 42px; }
   .main-nav { top: 69px; }
-  .language-switch { font-size: 11px; }
+  .language-switch { font-size: 12px; }
   .language-switch a { padding: 8px 0; }
   .hero { min-height: auto; grid-template-columns: 1fr; gap: 20px; padding-block: 70px 40px; }
   .hero h1 { font-size: clamp(44px, 13vw, 62px); }
