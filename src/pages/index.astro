@@ -16,12 +16,45 @@ const socials = [
   ["Facebook", "#contact"],
 ];
 
+const books = [
+  {
+    title: "해를 낚은 할아버지",
+    author: "김정미 글 · 남미리 그림",
+    description: "낚시에 자신 있던 할아버지가 바다에서 해를 낚으며 시작되는 상상력 가득한 그림책입니다.",
+    image: "book1.jpg",
+    imageAlt: "해를 낚은 할아버지 책 표지",
+    badge: "대표 도서",
+    href: "https://asteroidbook.com/books/theoldman/",
+    linkLabel: "책 자세히 보기",
+  },
+  {
+    title: "꿈붓 시리즈",
+    author: "김정미 글 · 김진주 외 그림",
+    description: "한 단계씩 차근차근 이야기를 읽으며 글자의 소리와 뜻을 익히고, 자연스럽게 한국어와 친해지는 한글읽기책 시리즈입니다.",
+    image: "dummy-book-2.svg",
+    imageAlt: "단계별 한글 읽기를 표현한 꿈붓 시리즈 표지",
+    badge: "한글읽기책",
+    href: "#contact",
+    linkLabel: "시리즈 소식 받기",
+  },
+  {
+    title: "숨붓 시리즈",
+    author: "춤붓 기획 · 전문가 공동 집필",
+    description: "마음을 천천히 들여다보는 심리 활동과 기억을 깨우는 인지 자극을 담아, 어른의 일상에 편안한 숨과 활력을 더하는 책입니다.",
+    image: "dummy-book-3.svg",
+    imageAlt: "마음 돌봄과 기억의 연결을 표현한 숨붓 시리즈 표지",
+    badge: "마음돌봄책",
+    href: "#contact",
+    linkLabel: "시리즈 소식 받기",
+  },
+];
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <BaseLayout
-  title="춤붓 | 이야기와 함께 마음껏 춤춰요"
-  description="다채로운 이야기들이 마음 속에서 춤을 추면, 나와 세상이 조금 더 풍성하게 채워집니다."
+  title="춤붓 | 다채로운 이야기와 함께 마음껏 춤춰요"
+  description="마음을 움직이는 이야기의 힘으로 우리의 삶을 풍성하게 채워갑니다."
 >
   <header class="site-header">
     <a class="brand" href="#top" aria-label="춤붓 홈페이지">
@@ -48,14 +81,47 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     <section class="hero section-shell">
       <div class="hero-copy">
         <p class="kicker"><span></span> Choomboot Publishing</p>
-        <h1>이야기와 함께<br /><em>마음껏 춤춰요.</em></h1>
+        <h1>
+          다채로운 이야기와 함께<br />
+          <em class="dance-text" aria-label="마음껏 춤춰요.">
+            <span class="dance-word" aria-hidden="true">
+              <span>마</span><span>음</span><span>껏</span>
+            </span>
+            <span class="dance-word" aria-hidden="true">
+              <span>춤</span><span>춰</span><span>요</span><span>.</span>
+            </span>
+            <svg class="hero-brush" viewBox="0 0 58 68" aria-hidden="true">
+              <defs>
+                <linearGradient id="brush-handle" x1="16" y1="38" x2="37" y2="4" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#10131C" />
+                  <stop offset="1" stop-color="#26375F" />
+                </linearGradient>
+                <linearGradient id="brush-tip" x1="13" y1="44" x2="5" y2="65" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#18233D" />
+                  <stop offset="1" stop-color="#020308" />
+                </linearGradient>
+                <linearGradient id="ink-trace" x1="2" y1="64" x2="51" y2="54" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#03050A" />
+                  <stop offset=".72" stop-color="#172442" />
+                  <stop offset="1" stop-color="#26375F" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              <path d="M13 16c-6 3-10 8-11 14M18 8C10 10 6 14 3 19" fill="none" stroke="#26375F" stroke-width="2" stroke-linecap="round" opacity=".45" />
+              <path d="M31 2c5 3 8 7 9 12L25 42l-12-7L27 7c1-2 2-4 4-5Z" fill="url(#brush-handle)" />
+              <path d="m12 34 14 8-5 8-14-8 5-8Z" fill="#34466F" />
+              <path d="M8 42l13 8C16 58 9 63 0 66c2-10 4-18 8-24Z" fill="url(#brush-tip)" />
+              <path d="M8 47C5 54 3 60 2 64" fill="none" stroke="#69728A" stroke-width="1.2" stroke-linecap="round" />
+              <path d="M1 63c12 3 25 1 37-5 7-4 13-5 19-5-7 4-12 8-20 11-13 5-25 5-36 2Z" fill="url(#ink-trace)" />
+            </svg>
+          </em>
+        </h1>
         <p class="hero-description">
-          다채로운 이야기들이 마음 속에서 춤을 추면,<br />
-          나와 세상이 조금 더 풍성하게 채워집니다.
+          마음을 움직이는 이야기의 힘으로<br />
+          우리의 삶을 풍성하게 채워갑니다.
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href="#books">도서 보기</a>
-          <a class="button button-text" href="#about">춤붓 소개 <span>↗</span></a>
+          <a class="button button-secondary" href="#about">춤붓 소개 <span>↗</span></a>
         </div>
       </div>
 
@@ -64,53 +130,59 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         <div class="pastel-shape shape-blue"></div>
         <div class="pastel-shape shape-coral"></div>
         <img class="hero-logo" src={`${base}/logo-choomboot.svg`} alt="" />
-        <p>Choomboot<br />Publishing</p>
+        <p>CHOOMBOOT<br />PUBLISHING</p>
       </div>
     </section>
 
-    <section id="books" class="featured-book section-shell">
-      <div class="book-visual">
-        <div class="book-halo"></div>
-        <img src={`${base}/assets/books/book1.jpg`} alt="해를 낚은 할아버지 책 표지" />
-        <span class="book-sticker">대표 도서</span>
+    <section id="books" class="books-section section-shell">
+      <div class="books-heading">
+        <p class="kicker coral"><span></span> Books</p>
+        <h2>춤붓의 책을 만나보세요</h2>
+        <p>마음에 오래 머물며 저마다의 리듬으로 춤추는 이야기를 소개합니다.</p>
       </div>
-      <div class="book-content">
-        <p class="kicker coral"><span></span> Featured Book</p>
-        <h2>해를 낚은<br />할아버지</h2>
-        <p class="book-meta">김정미 글 · 남미리 그림</p>
-        <p>
-          낚시에 자신 있던 할아버지가 바다에서 해를 낚으며 시작되는 상상력 가득한 그림책입니다.
-          자연과의 균형, 실수를 함께 해결하는 힘을 따뜻한 장면으로 전합니다.
-        </p>
-        <a class="button button-dark" href="https://asteroidbook.com/books/theoldman/" rel="noreferrer">
-          책 자세히 보기 <span>↗</span>
-        </a>
+      <div class="book-grid">
+        {books.map((book) => (
+          <article class="book-card">
+            <div class="book-cover">
+              <img src={`${base}/assets/books/${book.image}`} alt={book.imageAlt} />
+              <span>{book.badge}</span>
+            </div>
+            <div class="book-card-content">
+              <h3>{book.title}</h3>
+              <p class="book-meta">{book.author}</p>
+              <p>{book.description}</p>
+              <a class="button button-dark" href={book.href} rel={book.href.startsWith("http") ? "noreferrer" : undefined}>
+                {book.linkLabel} <span>↗</span>
+              </a>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
 
     <section id="about" class="story-section section-shell">
       <div class="section-heading">
         <p class="kicker"><span></span> About Choomboot</p>
-        <h2>책장을 넘기는 순간,<br /><em>새로운 춤이 시작됩니다.</em></h2>
+        <h2>책장을 넘기는 순간,<br /><em>다채로운 이야기가 춤을 춥니다.</em></h2>
       </div>
       <div class="story-grid">
         <article class="story-card lilac-card">
           <span class="card-number">01</span>
-          <h3>이야기를 발견합니다</h3>
-          <p>일상 속 작고 특별한 순간에서 오래 남을 이야기를 찾습니다.</p>
-          <a href="#about" aria-label="이야기를 발견합니다 더 보기">→</a>
+          <h3>춤붓의 책들</h3>
+          <p>어린이부터 어른까지, 마음에 오래 머물며 저마다의 리듬을 깨우는 책을 만듭니다.</p>
+          <a href="#books" aria-label="춤붓의 책들 보기">→</a>
         </article>
         <article class="story-card blue-card">
           <span class="card-number">02</span>
-          <h3>정성껏 책을 만듭니다</h3>
-          <p>글과 그림이 가장 아름답게 만나는 호흡을 고민합니다.</p>
-          <a href="#about" aria-label="정성껏 책을 만듭니다 더 보기">→</a>
+          <h3>상담심리 강의</h3>
+          <p>이야기와 심리학을 연결해 자신과 타인의 마음을 깊이 이해하는 배움의 시간을 엽니다.</p>
+          <a href="#lectures" aria-label="상담심리 강의 알아보기">→</a>
         </article>
         <article class="story-card coral-card">
           <span class="card-number">03</span>
-          <h3>독자와 함께 나눕니다</h3>
-          <p>책, 강의와 자료를 통해 이야기의 즐거움을 넓혀갑니다.</p>
-          <a href="#about" aria-label="독자와 함께 나눕니다 더 보기">→</a>
+          <h3>한국어 교육</h3>
+          <p>단계별 한글읽기책과 한국어 영상 콘텐츠로 쉽고 즐거운 배움의 길을 만듭니다.</p>
+          <a href="#downloads" aria-label="한국어 교육 자료 알아보기">→</a>
         </article>
       </div>
     </section>
@@ -151,13 +223,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   <footer id="contact" class="site-footer section-shell">
     <div class="footer-brand">
       <img src={`${base}/logo-choomboot.svg`} alt="춤붓" />
-      <p>이야기와 함께 춤추는 곳</p>
+      <p>이야기와 함께 마음껏 춤춰요.</p>
     </div>
     <div class="footer-links">
       <div>
         <strong>Contact</strong>
         <a href="mailto:hello@example.com">hello@example.com</a>
-        <span>서울특별시 주소 준비 중</span>
+        <span>경기도 파주시 청석로 272, 10층 1004-157호 (동패동, 센타프라자1)</span>
       </div>
       <div>
         <strong>Follow</strong>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">숨붓 시리즈 마음돌봄책</title>
+  <desc id="desc">천천히 이어지는 숨과 기억의 잎을 부드러운 선으로 표현한 성인 마음돌봄 표지</desc>
+  <rect width="800" height="600" fill="#FFF8F1"/>
+  <circle cx="610" cy="205" r="170" fill="#DCECD8"/>
+  <circle cx="150" cy="475" r="120" fill="#F1E3FB"/>
+  <path d="M85 365C185 265 270 455 385 345S585 260 715 360" fill="none" stroke="#43B4EC" stroke-width="28" stroke-linecap="round"/>
+  <path d="M390 345c-30-90-90-145-160-165M390 345c62-88 125-125 205-125" fill="none" stroke="#82C98A" stroke-width="15" stroke-linecap="round"/>
+  <g fill="#82C98A">
+    <ellipse cx="230" cy="180" rx="39" ry="20" transform="rotate(25 230 180)"/>
+    <ellipse cx="295" cy="235" rx="39" ry="20" transform="rotate(-25 295 235)"/>
+    <ellipse cx="520" cy="260" rx="39" ry="20" transform="rotate(25 520 260)"/>
+    <ellipse cx="595" cy="220" rx="39" ry="20" transform="rotate(-25 595 220)"/>
+  </g>
+  <circle cx="390" cy="345" r="24" fill="#FFB7C7"/>
+  <text x="62" y="92" fill="#262033" font-family="Arial, sans-serif" font-size="62" font-weight="800">숨붓 시리즈</text>
+  <text x="65" y="145" fill="#43B4EC" font-family="Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="3">마음 · 기억 · 천천히 숨 쉬기</text>
+  <text x="610" y="520" text-anchor="middle" fill="#5F586A" font-family="Arial, sans-serif" font-size="25">어른을 위한 마음돌봄책</text>
+</svg>
