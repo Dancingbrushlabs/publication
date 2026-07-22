@@ -1,18 +1,278 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const navItems = [
+  ["About", "#about"],
+  ["Books", "#books"],
+  ["Lectures", "#lectures"],
+  ["Resources", "#downloads"],
+  ["News", "#news"],
+  ["Shop", "#buy"],
+];
+
+const socials = [
+  ["Instagram", "#contact"],
+  ["Naver Blog", "#contact"],
+  ["Facebook", "#contact"],
+];
+
+const books = [
+  {
+    title: "The Grandfather Who Fished for the Sun",
+    author: "Written by Jeongmi Kim · Illustrated by Miri Nam",
+    description: "An imaginative picture book about a grandfather, proud of his fishing skills, who one day catches the sun at sea.",
+    image: "book1.jpg",
+    imageAlt: "Cover of The Grandfather Who Fished for the Sun",
+    badge: "Featured",
+    href: "https://asteroidbook.com/books/theoldman/",
+    linkLabel: "View book",
+  },
+  {
+    title: "Dreambrush Series",
+    author: "Written by Jeongmi Kim · Illustrated by Jinju Kim and others",
+    description: "A step-by-step Korean reading series that helps readers discover the sounds and meanings of Hangul and grow comfortable with Korean through stories.",
+    image: "dummy-book-2.svg",
+    imageAlt: "Dreambrush Series cover illustrating step-by-step Hangul reading",
+    badge: "Hangul Readers",
+    href: "#contact",
+    linkLabel: "Get series updates",
+  },
+  {
+    title: "Soombut Series",
+    author: "Developed by Choomboot · Written with specialists",
+    description: "Mind-care books for adults, combining gentle psychological reflection and cognitive activities to bring calm, memory, and vitality into everyday life.",
+    image: "dummy-book-3.svg",
+    imageAlt: "Soombut Series cover illustrating mind care and memory",
+    badge: "Mind Care",
+    href: "#contact",
+    linkLabel: "Get series updates",
+  },
+];
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <BaseLayout
   lang="en"
-  title="Choomboot | A place where stories dance"
-  description="The English website for Choomboot Publishing is being prepared."
+  title="Choomboot | Let colorful stories dance freely"
+  description="Through stories that move the heart, we enrich the lives we share."
 >
-  <main class="language-placeholder">
-    <img src={`${base}/logo-choomboot.svg`} alt="Choomboot" />
-    <p class="kicker"><span></span> Choomboot Publishing</p>
-    <h1>A place where<br /><em>stories dance.</em></h1>
-    <p>Our English website is being prepared.</p>
-    <a class="button button-primary" href={`${base}/`}>한국어 홈페이지</a>
+  <header class="site-header en-page">
+    <a class="brand" href="#top" aria-label="Choomboot homepage">
+      <img src={`${base}/logo-choomboot-en.svg`} alt="" />
+    </a>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+      <span class="sr-only">Open menu</span>
+      <span></span><span></span>
+    </button>
+
+    <nav id="main-nav" class="main-nav" aria-label="Main navigation">
+      {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
+    </nav>
+
+    <div class="language-switch" aria-label="Language selection">
+      <a href={`${base}/`}>한국어</a>
+      <span aria-hidden="true"></span>
+      <a class="active" href={`${base}/en/`} aria-current="page">English</a>
+    </div>
+  </header>
+
+  <main id="top" class="en-page">
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <p class="kicker"><span></span> Choomboot Publishing</p>
+        <h1>
+          Colorful stories,<br />
+          <em class="dance-text" aria-label="dance freely.">
+            <span class="dance-word" aria-hidden="true">
+              <span>d</span><span>a</span><span>n</span><span>c</span><span>e</span>
+            </span>
+            <span class="dance-word" aria-hidden="true">
+              <span>f</span><span>r</span><span>e</span><span>e</span><span>l</span><span>y</span><span>.</span>
+            </span>
+            <svg class="hero-brush" viewBox="0 0 58 68" aria-hidden="true">
+              <defs>
+                <linearGradient id="brush-handle-en" x1="16" y1="38" x2="37" y2="4" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#10131C" />
+                  <stop offset="1" stop-color="#26375F" />
+                </linearGradient>
+                <linearGradient id="brush-tip-en" x1="13" y1="44" x2="5" y2="65" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#18233D" />
+                  <stop offset="1" stop-color="#020308" />
+                </linearGradient>
+                <linearGradient id="ink-trace-en" x1="2" y1="64" x2="51" y2="54" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#03050A" />
+                  <stop offset=".72" stop-color="#172442" />
+                  <stop offset="1" stop-color="#26375F" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              <path d="M13 16c-6 3-10 8-11 14M18 8C10 10 6 14 3 19" fill="none" stroke="#26375F" stroke-width="2" stroke-linecap="round" opacity=".45" />
+              <path d="M31 2c5 3 8 7 9 12L25 42l-12-7L27 7c1-2 2-4 4-5Z" fill="url(#brush-handle-en)" />
+              <path d="m12 34 14 8-5 8-14-8 5-8Z" fill="#34466F" />
+              <path d="M8 42l13 8C16 58 9 63 0 66c2-10 4-18 8-24Z" fill="url(#brush-tip-en)" />
+              <path d="M8 47C5 54 3 60 2 64" fill="none" stroke="#69728A" stroke-width="1.2" stroke-linecap="round" />
+              <path d="M1 63c12 3 25 1 37-5 7-4 13-5 19-5-7 4-12 8-20 11-13 5-25 5-36 2Z" fill="url(#ink-trace-en)" />
+            </svg>
+          </em>
+        </h1>
+        <p class="hero-description">
+          Through stories that move the heart,<br />
+          we enrich the lives we share.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#books">View books</a>
+          <a class="button button-secondary" href="#about">About Choomboot <span>↗</span></a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="pastel-shape shape-lilac"></div>
+        <div class="pastel-shape shape-blue"></div>
+        <div class="pastel-shape shape-coral"></div>
+        <img class="hero-logo en-hero-logo" src={`${base}/logo-choomboot-en.svg`} alt="" />
+        <p>CHOOMBOOT<br />PUBLISHING</p>
+      </div>
+    </section>
+
+    <section id="books" class="books-section section-shell">
+      <div class="books-heading">
+        <p class="kicker coral"><span></span> Books</p>
+        <h2>Meet the books of Choomboot</h2>
+        <p>Discover stories that stay with the heart and dance to a rhythm of their own.</p>
+      </div>
+      <div class="book-grid">
+        {books.map((book) => (
+          <article class="book-card">
+            <div class="book-cover">
+              <img src={`${base}/assets/books/${book.image}`} alt={book.imageAlt} />
+              <span>{book.badge}</span>
+            </div>
+            <div class="book-card-content">
+              <h3>{book.title}</h3>
+              <p class="book-meta">{book.author}</p>
+              <p>{book.description}</p>
+              <a class="button button-dark" href={book.href} rel={book.href.startsWith("http") ? "noreferrer" : undefined}>
+                {book.linkLabel} <span>↗</span>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="about" class="story-section section-shell">
+      <div class="section-heading">
+        <p class="kicker"><span></span> About Choomboot</p>
+        <h2>Every time a page turns,<br /><em>colorful stories begin to dance.</em></h2>
+      </div>
+      <div class="story-grid">
+        <article class="story-card lilac-card">
+          <span class="card-number">01</span>
+          <h3>Books by Choomboot</h3>
+          <p>From children to adults, we create books that stay with the heart and awaken each reader's own rhythm.</p>
+          <a href="#books" aria-label="View books by Choomboot">→</a>
+        </article>
+        <article class="story-card blue-card">
+          <span class="card-number">02</span>
+          <h3>Counseling Psychology</h3>
+          <p>Our lectures connect stories and psychology, opening time to understand ourselves and others more deeply.</p>
+          <a href="#lectures" aria-label="Learn about counseling psychology lectures">→</a>
+        </article>
+        <article class="story-card coral-card">
+          <span class="card-number">03</span>
+          <h3>Korean Language Education</h3>
+          <p>Step-by-step Hangul readers and Korean video content make learning Korean easy and enjoyable.</p>
+          <a href="#downloads" aria-label="Explore Korean language education resources">→</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="path-section section-shell" aria-labelledby="path-title">
+      <div class="section-heading compact">
+        <p class="kicker"><span></span> Explore</p>
+        <h2 id="path-title">Discover more from Choomboot</h2>
+      </div>
+      <div class="path-grid">
+        <a id="lectures" class="path-card" href="#contact">
+          <span class="path-icon lilac-icon">♪</span>
+          <span><strong>Lectures</strong><small>Go deeper into books and stories</small></span>
+          <b>↗</b>
+        </a>
+        <a id="downloads" class="path-card" href="#contact">
+          <span class="path-icon blue-icon">↓</span>
+          <span><strong>Resources</strong><small>Audio and reading activity materials</small></span>
+          <b>↗</b>
+        </a>
+        <a id="news" class="path-card" href="#contact">
+          <span class="path-icon coral-icon">•</span>
+          <span><strong>News</strong><small>New books and the latest from Choomboot</small></span>
+          <b>↗</b>
+        </a>
+      </div>
+    </section>
+
+    <section id="buy" class="newsletter section-shell">
+      <div>
+        <p class="kicker light"><span></span> Stay in touch</p>
+        <h2>Be the first to hear<br />when a new story arrives.</h2>
+      </div>
+      <a class="button button-light" href="#contact">Get updates <span>↗</span></a>
+    </section>
   </main>
+
+  <footer id="contact" class="site-footer section-shell en-page">
+    <div class="footer-brand">
+      <img src={`${base}/logo-choomboot-en.svg`} alt="Choomboot" />
+      <p>Dance freely with stories.</p>
+    </div>
+    <div class="footer-links">
+      <div>
+        <strong>Contact</strong>
+        <a href="mailto:hello@example.com">hello@example.com</a>
+        <span>Unit 1004-157, 10F, Center Plaza 1, 272 Cheongseok-ro, Paju-si, Gyeonggi-do, Republic of Korea</span>
+      </div>
+      <div>
+        <strong>Follow</strong>
+        {socials.map(([label, href]) => <a href={href}>{label}</a>)}
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Choomboot Publishing</span>
+      <a href="#contact">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector(".main-nav");
+    toggle?.addEventListener("click", () => {
+      const open = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!open));
+      nav?.classList.toggle("is-open", !open);
+    });
+    nav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+      toggle?.setAttribute("aria-expanded", "false");
+      nav.classList.remove("is-open");
+    }));
+  </script>
+
+  <style>
+    .en-page .main-nav { gap: clamp(16px, 2vw, 32px); }
+    .en-page .brand img { width: 104px; height: auto; }
+    .en-page .hero h1 { letter-spacing: -.045em; }
+    .en-page .en-hero-logo { width: min(84%, 440px); }
+    .en-page .dance-word { gap: .025em; }
+    .en-page .dance-word:first-child > span:nth-child(4) { transform: translateY(.08em) rotate(-2deg); }
+    .en-page .dance-word:first-child > span:nth-child(5) { transform: translateY(-.06em) rotate(2deg); }
+    .en-page .dance-word:nth-child(2) > span:nth-child(5) { transform: translateY(.08em) rotate(-2deg); }
+    .en-page .dance-word:nth-child(2) > span:nth-child(6) { transform: translateY(-.07em) rotate(2deg); }
+    .en-page .dance-word:nth-child(2) > span:nth-child(7) { transform: translateY(.03em); }
+    .en-page .book-card-content h3 { font-size: clamp(24px, 2vw, 31px); }
+    .en-page .story-card h3 { font-size: 23px; }
+    .en-page .footer-brand img { width: 190px; }
+    @media (max-width: 760px) {
+      .en-page .hero h1 { font-size: clamp(42px, 12vw, 58px); }
+    }
+  </style>
 </BaseLayout>
