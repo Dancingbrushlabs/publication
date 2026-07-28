@@ -19,8 +19,8 @@ const socials = [
 const books = [
   {
     title: "The Grandfather Who Fished for the Sun",
-    author: "Written by Jeongmi Kim · Illustrated by Miri Nam",
-    description: "An imaginative picture book about a grandfather, proud of his fishing skills, who one day catches the sun at sea.",
+    author: "Written by Jeongmi Kim | Illustrated by Miri Nam",
+    description: "A whimsical picture book about a grandfather who takes pride in his fishing—and one day reels in the sun itself.",
     image: "book1.jpg",
     imageAlt: "Cover of The Grandfather Who Fished for the Sun",
     badge: "Featured",
@@ -29,8 +29,8 @@ const books = [
   },
   {
     title: "Dreambrush Series",
-    author: "Written by Jeongmi Kim · Illustrated by Jinju Kim and others",
-    description: "A step-by-step Korean reading series that helps readers discover the sounds and meanings of Hangul and grow comfortable with Korean through stories.",
+    author: "Written by Jeongmi Kim | Illustrated by Jinju Kim and others",
+    description: "A step-by-step reading series that helps learners build confidence in Hangul and feel at home with Korean, one story at a time.",
     image: "dummy-book-2.svg",
     imageAlt: "Dreambrush Series cover illustrating step-by-step Hangul reading",
     badge: "Hangul Readers",
@@ -39,8 +39,8 @@ const books = [
   },
   {
     title: "Soombut Series",
-    author: "Developed by Choomboot · Written with specialists",
-    description: "Mind-care books for adults, combining gentle psychological reflection and cognitive activities to bring calm, memory, and vitality into everyday life.",
+    author: "Created by Choomboot | Developed with specialists",
+    description: "A wellness series for adults, blending thoughtful reflection with cognitive activities that support calm, memory, and vitality in everyday life.",
     image: "dummy-book-3.svg",
     imageAlt: "Soombut Series cover illustrating mind care and memory",
     badge: "Mind Care",
@@ -54,8 +54,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 <BaseLayout
   lang="en"
-  title="Choomboot | Let colorful stories dance freely"
-  description="Through stories that move the heart, we enrich the lives we share."
+  title="Choomboot | Stories That Move You"
+  description="We believe in the power of stories to move hearts and enrich our lives."
 >
   <header class="site-header en-page">
     <a class="brand" href="#top" aria-label="Choomboot homepage">
@@ -83,13 +83,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <div class="hero-copy">
         <p class="kicker"><span></span> Choomboot Publishing</p>
         <h1>
-          Colorful stories,<br />
-          <em class="dance-text" aria-label="dance freely.">
+          Vibrant stories<br />
+          <em class="dance-text" aria-label="make hearts dance.">
             <span class="dance-word" aria-hidden="true">
-              <span>d</span><span>a</span><span>n</span><span>c</span><span>e</span>
+              <span>m</span><span>a</span><span>k</span><span>e</span>
             </span>
             <span class="dance-word" aria-hidden="true">
-              <span>f</span><span>r</span><span>e</span><span>e</span><span>l</span><span>y</span><span>.</span>
+              <span>h</span><span>e</span><span>a</span><span>r</span><span>t</span><span>s</span>
+            </span>
+            <span class="dance-word" aria-hidden="true">
+              <span>d</span><span>a</span><span>n</span><span>c</span><span>e</span><span>.</span>
             </span>
             <svg class="hero-brush" viewBox="0 0 58 68" aria-hidden="true">
               <defs>
@@ -117,8 +120,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           </em>
         </h1>
         <p class="hero-description">
-          Through stories that move the heart,<br />
-          we enrich the lives we share.
+          We believe in the power of stories<br />
+          to move hearts and enrich our lives.
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href="#books">View books</a>
@@ -131,15 +134,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         <div class="pastel-shape shape-blue"></div>
         <div class="pastel-shape shape-coral"></div>
         <img class="hero-logo en-hero-logo" src={`${base}/logo-choomboot-en.svg`} alt="" />
-        <p>CHOOMBOOT<br />PUBLISHING</p>
+        <p class="hero-korean-mark">춤붓</p>
       </div>
     </section>
 
     <section id="books" class="books-section section-shell">
       <div class="books-heading">
         <p class="kicker coral"><span></span> Books</p>
-        <h2>Meet the books of Choomboot</h2>
-        <p>Discover stories that stay with the heart and dance to a rhythm of their own.</p>
+        <h2>Explore Our Books</h2>
+        <p>Stories with a rhythm of their own—made to linger long after the last page.</p>
       </div>
       <div class="book-grid">
         {books.map((book) => (
@@ -164,25 +167,25 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     <section id="about" class="story-section section-shell">
       <div class="section-heading">
         <p class="kicker"><span></span> About Choomboot</p>
-        <h2>Every time a page turns,<br /><em>colorful stories begin to dance.</em></h2>
+        <h2>Turn the page,<br /><em>and every story comes alive.</em></h2>
       </div>
       <div class="story-grid">
         <article class="story-card lilac-card">
           <span class="card-number">01</span>
-          <h3>Books by Choomboot</h3>
-          <p>From children to adults, we create books that stay with the heart and awaken each reader's own rhythm.</p>
+          <h3>Books for Every Reader</h3>
+          <p>From picture books for children to thoughtful reads for adults, we create stories that stay with you.</p>
           <a href="#books" aria-label="View books by Choomboot">→</a>
         </article>
         <article class="story-card blue-card">
           <span class="card-number">02</span>
-          <h3>Counseling Psychology</h3>
-          <p>Our lectures connect stories and psychology, opening time to understand ourselves and others more deeply.</p>
+          <h3>Counseling &amp; Psychology</h3>
+          <p>Our lectures bring stories and psychology together, creating space to understand ourselves—and one another—more deeply.</p>
           <a href="#lectures" aria-label="Learn about counseling psychology lectures">→</a>
         </article>
         <article class="story-card coral-card">
           <span class="card-number">03</span>
           <h3>Korean Language Education</h3>
-          <p>Step-by-step Hangul readers and Korean video content make learning Korean easy and enjoyable.</p>
+          <p>Step-by-step Hangul readers and Korean-language videos make learning approachable, engaging, and fun.</p>
           <a href="#downloads" aria-label="Explore Korean language education resources">→</a>
         </article>
       </div>
@@ -191,12 +194,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     <section class="path-section section-shell" aria-labelledby="path-title">
       <div class="section-heading compact">
         <p class="kicker"><span></span> Explore</p>
-        <h2 id="path-title">Discover more from Choomboot</h2>
+        <h2 id="path-title">More to Explore</h2>
       </div>
       <div class="path-grid">
         <a id="lectures" class="path-card" href="#contact">
           <span class="path-icon lilac-icon">♪</span>
-          <span><strong>Lectures</strong><small>Go deeper into books and stories</small></span>
+          <span><strong>Lectures</strong><small>Explore books and stories in greater depth</small></span>
           <b>↗</b>
         </a>
         <a id="downloads" class="path-card" href="#contact">
@@ -206,7 +209,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         </a>
         <a id="news" class="path-card" href="#contact">
           <span class="path-icon coral-icon">•</span>
-          <span><strong>News</strong><small>New books and the latest from Choomboot</small></span>
+          <span><strong>News</strong><small>New releases and updates from Choomboot</small></span>
           <b>↗</b>
         </a>
       </div>
@@ -224,7 +227,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   <footer id="contact" class="site-footer section-shell en-page">
     <div class="footer-brand">
       <img src={`${base}/logo-choomboot-en.svg`} alt="Choomboot" />
-      <p>Dance freely with stories.</p>
+      <p>Stories that move with you.</p>
     </div>
     <div class="footer-links">
       <div>
@@ -260,19 +263,31 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   <style>
     .en-page .main-nav { gap: clamp(16px, 2vw, 32px); }
     .en-page .brand img { width: 104px; height: auto; }
-    .en-page .hero h1 { letter-spacing: -.045em; }
+    .en-page .hero h1 {
+      font-size: clamp(58px, 5vw, 82px);
+      letter-spacing: -.045em;
+    }
+    .en-page .hero-description { font-size: clamp(19px, 1.55vw, 25px); }
     .en-page .en-hero-logo { width: min(84%, 440px); }
     .en-page .dance-word { gap: .025em; }
     .en-page .dance-word:first-child > span:nth-child(4) { transform: translateY(.08em) rotate(-2deg); }
     .en-page .dance-word:first-child > span:nth-child(5) { transform: translateY(-.06em) rotate(2deg); }
     .en-page .dance-word:nth-child(2) > span:nth-child(5) { transform: translateY(.08em) rotate(-2deg); }
     .en-page .dance-word:nth-child(2) > span:nth-child(6) { transform: translateY(-.07em) rotate(2deg); }
-    .en-page .dance-word:nth-child(2) > span:nth-child(7) { transform: translateY(.03em); }
+    .en-page .dance-word:nth-child(3) > span:nth-child(4) { transform: translateY(.08em) rotate(-2deg); }
+    .en-page .dance-word:nth-child(3) > span:nth-child(5) { transform: translateY(-.07em) rotate(2deg); }
+    .en-page .hero-korean-mark {
+      font-family: "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+      font-size: clamp(22px, 2vw, 30px);
+      font-style: normal;
+      font-weight: 800;
+      letter-spacing: -.08em;
+    }
     .en-page .book-card-content h3 { font-size: clamp(24px, 2vw, 31px); }
     .en-page .story-card h3 { font-size: 23px; }
     .en-page .footer-brand img { width: 190px; }
     @media (max-width: 760px) {
-      .en-page .hero h1 { font-size: clamp(42px, 12vw, 58px); }
+      .en-page .hero h1 { font-size: clamp(46px, 12.5vw, 62px); }
     }
   </style>
 </BaseLayout>
